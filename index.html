@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simple Responsive Web Page</title>
+  <meta name="description" content="A clean, responsive single-file HTML example with CSS and small JS.">
+  <style>
+    :root{--bg:#0f172a;--card:#0b1220;--accent:linear-gradient(135deg,#7c3aed,#06b6d4);} 
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial;line-height:1.5;color:#e6eef8;background:radial-gradient(1200px 500px at 10% 10%, rgba(99,102,241,0.12), transparent), radial-gradient(900px 400px at 90% 90%, rgba(6,182,212,0.06), transparent), var(--bg);min-height:100vh;}
+    .container{max-width:1100px;margin:0 auto;padding:2rem}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0}
+    .brand{display:flex;align-items:center;gap:.6rem;color:white;text-decoration:none}
+    .logo{width:44px;height:44px;background:var(--accent);display:grid;place-items:center;border-radius:8px;color:white;font-weight:700}
+
+    nav{display:flex;gap:1rem}
+    nav a{color:rgba(230,238,248,0.9);text-decoration:none;padding:.4rem .6rem;border-radius:6px}
+    nav a:hover{background:rgba(255,255,255,0.03)}
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:2rem;align-items:center;padding:3rem 0}
+    .hero h1{font-size:2.1rem;color:#fff;margin-bottom:.6rem}
+    .hero p{color:rgba(230,238,248,0.85);margin-bottom:1rem}
+    .btn{display:inline-block;padding:.65rem 1rem;border-radius:10px;background:linear-gradient(90deg,#7c3aed,#06b6d4);color:white;text-decoration:none;font-weight:600}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);padding:1.2rem;border-radius:12px;backdrop-filter: blur(6px)}
+
+    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:2rem}
+    .feature{padding:1rem;border-radius:10px;background:rgba(255,255,255,0.02)}
+    .feature h3{margin-bottom:.5rem;color:#fff}
+    .feature p{color:rgba(230,238,248,0.8);font-size:.95rem}
+
+    form{display:grid;gap:.6rem}
+    input,textarea{width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit}
+    textarea{min-height:120px;resize:vertical}
+
+    footer{padding:2rem 0;text-align:center;color:rgba(230,238,248,0.6)}
+
+    /* responsive */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr;}
+      nav{display:none}
+      .menu-toggle{display:inline-block}
+    }
+    .menu-toggle{display:none;padding:.4rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:rgba(230,238,248,0.9)}
+
+    /* small utility */
+    .space{height:1rem}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="brand" href="#">
+        <div class="logo">W</div>
+        <div>
+          <div style="font-weight:700">My Web Page</div>
+          <div style="font-size:12px;color:rgba(230,238,248,0.6)">Simple HTML demo</div>
+        </div>
+      </a>
+
+      <div>
+        <button class="menu-toggle" aria-expanded="false" onclick="toggleMenu()">☰</button>
+        <nav id="main-nav">
+          <a href="#home">Home</a>
+          <a href="#features">Features</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div>
+          <h1>Build beautiful websites with plain HTML, CSS & a little JS</h1>
+          <p>Create responsive pages that look great on phones and desktops. This single-file example is easy to copy and reuse.</p>
+          <a class="btn" href="#contact">Get in touch</a>
+
+          <div class="space"></div>
+          <div class="card">
+            <strong>Tip:</strong> Save this file as <code>index.html</code> and open it in your browser.
+          </div>
+        </div>
+
+        <aside class="card">
+          <h3 style="color:white">Quick Preview</h3>
+          <p style="color:rgba(230,238,248,0.8)">This panel shows a compact card. You can add images, videos or code snippets here.</p>
+          <div class="space"></div>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+            <div style="flex:1;min-width:120px"><strong>Responsive</strong><div style="color:rgba(230,238,248,0.7)">Mobile-first design</div></div>
+            <div style="flex:1;min-width:120px"><strong>Accessible</strong><div style="color:rgba(230,238,248,0.7)">Keyboard + screen reader friendly</div></div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="features">
+        <h2 style="color:white;margin-bottom:1rem">Features</h2>
+        <div class="features">
+          <div class="feature card">
+            <h3>Clean design</h3>
+            <p>Minimal layout that you can extend—add sections, images, or a blog.</p>
+          </div>
+          <div class="feature card">
+            <h3>Responsive</h3>
+            <p>Grid layout adapts to screen size using CSS grid and media queries.</p>
+          </div>
+          <div class="feature card">
+            <h3>Easy to host</h3>
+            <p>Works on GitHub Pages, Netlify, Vercel, or any static host—no backend needed.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" style="margin-top:2.2rem">
+        <h2 style="color:white;margin-bottom:.8rem">Contact</h2>
+        <div class="card">
+          <form onsubmit="submitForm(event)">
+            <label for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name" required>
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Write a short message"></textarea>
+
+            <div style="display:flex;gap:.5rem;justify-content:flex-end;margin-top:.5rem">
+              <button type="submit" class="btn">Send</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Made with ❤️ — copy this file and modify it. • © <span id="year"></span></p>
+    </footer>
+  </div>
+
+  <script>
+    // small JS helpers
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function toggleMenu(){
+      const nav = document.getElementById('main-nav');
+      const btn = document.querySelector('.menu-toggle');
+      const open = nav.style.display !== 'none' && nav.style.display !== '';
+      if(window.innerWidth <= 880){
+        nav.style.display = open ? 'none' : 'flex';
+        btn.setAttribute('aria-expanded', String(!open));
+      }
+    }
+
+    // basic form handler (demo only)
+    function submitForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      alert('Thanks, ' + (name || 'friend') + '! This demo does not actually send messages.');
+      e.target.reset();
+    }
+
+    // close nav on resize larger screens
+    window.addEventListener('resize', ()=>{
+      const nav = document.getElementById('main-nav');
+      if(window.innerWidth > 880){nav.style.display = 'flex'}
+    });
+  </script>
+</body>
+</html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simple Responsive Web Page</title>
+  <meta name="description" content="A clean, responsive single-file HTML example with CSS and small JS.">
+  <style>
+    :root{--bg:#0f172a;--card:#0b1220;--accent:linear-gradient(135deg,#7c3aed,#06b6d4);} 
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial;line-height:1.5;color:#e6eef8;background:radial-gradient(1200px 500px at 10% 10%, rgba(99,102,241,0.12), transparent), radial-gradient(900px 400px at 90% 90%, rgba(6,182,212,0.06), transparent), var(--bg);min-height:100vh;}
+    .container{max-width:1100px;margin:0 auto;padding:2rem}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0}
+    .brand{display:flex;align-items:center;gap:.6rem;color:white;text-decoration:none}
+    .logo{width:44px;height:44px;background:var(--accent);display:grid;place-items:center;border-radius:8px;color:white;font-weight:700}
+
+    nav{display:flex;gap:1rem}
+    nav a{color:rgba(230,238,248,0.9);text-decoration:none;padding:.4rem .6rem;border-radius:6px}
+    nav a:hover{background:rgba(255,255,255,0.03)}
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:2rem;align-items:center;padding:3rem 0}
+    .hero h1{font-size:2.1rem;color:#fff;margin-bottom:.6rem}
+    .hero p{color:rgba(230,238,248,0.85);margin-bottom:1rem}
+    .btn{display:inline-block;padding:.65rem 1rem;border-radius:10px;background:linear-gradient(90deg,#7c3aed,#06b6d4);color:white;text-decoration:none;font-weight:600}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);padding:1.2rem;border-radius:12px;backdrop-filter: blur(6px)}
+
+    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:2rem}
+    .feature{padding:1rem;border-radius:10px;background:rgba(255,255,255,0.02)}
+    .feature h3{margin-bottom:.5rem;color:#fff}
+    .feature p{color:rgba(230,238,248,0.8);font-size:.95rem}
+
+    form{display:grid;gap:.6rem}
+    input,textarea{width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit}
+    textarea{min-height:120px;resize:vertical}
+
+    footer{padding:2rem 0;text-align:center;color:rgba(230,238,248,0.6)}
+
+    /* responsive */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr;}
+      nav{display:none}
+      .menu-toggle{display:inline-block}
+    }
+    .menu-toggle{display:none;padding:.4rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:rgba(230,238,248,0.9)}
+
+    /* small utility */
+    .space{height:1rem}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="brand" href="#">
+        <div class="logo">W</div>
+        <div>
+          <div style="font-weight:700">My Web Page</div>
+          <div style="font-size:12px;color:rgba(230,238,248,0.6)">Simple HTML demo</div>
+        </div>
+      </a>
+
+      <div>
+        <button class="menu-toggle" aria-expanded="false" onclick="toggleMenu()">☰</button>
+        <nav id="main-nav">
+          <a href="#home">Home</a>
+          <a href="#features">Features</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div>
+          <h1>Build beautiful websites with plain HTML, CSS & a little JS</h1>
+          <p>Create responsive pages that look great on phones and desktops. This single-file example is easy to copy and reuse.</p>
+          <a class="btn" href="#contact">Get in touch</a>
+
+          <div class="space"></div>
+          <div class="card">
+            <strong>Tip:</strong> Save this file as <code>index.html</code> and open it in your browser.
+          </div>
+        </div>
+
+        <aside class="card">
+          <h3 style="color:white">Quick Preview</h3>
+          <p style="color:rgba(230,238,248,0.8)">This panel shows a compact card. You can add images, videos or code snippets here.</p>
+          <div class="space"></div>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+            <div style="flex:1;min-width:120px"><strong>Responsive</strong><div style="color:rgba(230,238,248,0.7)">Mobile-first design</div></div>
+            <div style="flex:1;min-width:120px"><strong>Accessible</strong><div style="color:rgba(230,238,248,0.7)">Keyboard + screen reader friendly</div></div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="features">
+        <h2 style="color:white;margin-bottom:1rem">Features</h2>
+        <div class="features">
+          <div class="feature card">
+            <h3>Clean design</h3>
+            <p>Minimal layout that you can extend—add sections, images, or a blog.</p>
+          </div>
+          <div class="feature card">
+            <h3>Responsive</h3>
+            <p>Grid layout adapts to screen size using CSS grid and media queries.</p>
+          </div>
+          <div class="feature card">
+            <h3>Easy to host</h3>
+            <p>Works on GitHub Pages, Netlify, Vercel, or any static host—no backend needed.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" style="margin-top:2.2rem">
+        <h2 style="color:white;margin-bottom:.8rem">Contact</h2>
+        <div class="card">
+          <form onsubmit="submitForm(event)">
+            <label for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name" required>
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Write a short message"></textarea>
+
+            <div style="display:flex;gap:.5rem;justify-content:flex-end;margin-top:.5rem">
+              <button type="submit" class="btn">Send</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Made with ❤️ — copy this file and modify it. • © <span id="year"></span></p>
+    </footer>
+  </div>
+
+  <script>
+    // small JS helpers
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function toggleMenu(){
+      const nav = document.getElementById('main-nav');
+      const btn = document.querySelector('.menu-toggle');
+      const open = nav.style.display !== 'none' && nav.style.display !== '';
+      if(window.innerWidth <= 880){
+        nav.style.display = open ? 'none' : 'flex';
+        btn.setAttribute('aria-expanded', String(!open));
+      }
+    }
+
+    // basic form handler (demo only)
+    function submitForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      alert('Thanks, ' + (name || 'friend') + '! This demo does not actually send messages.');
+      e.target.reset();
+    }
+
+    // close nav on resize larger screens
+    window.addEventListener('resize', ()=>{
+      const nav = document.getElementById('main-nav');
+      if(window.innerWidth > 880){nav.style.display = 'flex'}
+    });
+  </script>
+</body>
+</html>
